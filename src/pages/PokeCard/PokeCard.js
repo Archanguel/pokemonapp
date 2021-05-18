@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import pokedex from "../imgs/pokedex.jpg";
+import pokedex from "../imgs/pokedex.png";
 
 export const PokeCard = ({ pokemon }) => {
   const [pokemonData, setPokemonData] = React.useState();
@@ -11,35 +11,33 @@ export const PokeCard = ({ pokemon }) => {
     );
   }, []);
 
-  return (
-    <Pokedex width="30px">
-      <Container className="grid-container">
-        <Div>
-          {pokemonData && (
-            <img src={pokemonData.sprites.front_default} alt="Imagen del Pokemon" />
-          )}
-        </Div>
+  //const typeList = pokemonData.types.map((type) => <li>{type.name}</li>)
+  //const abilityList = pokemonData.abilities.map((ability) => <li>{ability.name}</li>)
 
-        <Div className="item1">
+  return (
+    <Pokedex width="20px">
+      <Container>
+        {pokemonData && (
+          <img src={pokemonData.sprites.front_default} alt="Imagen del Pokemon" />
+        )}
+
+        <Div>
           <p>Name: {pokemonData.forms[0].name}</p>
           <p>Nº {pokemonData.id}</p>
         </Div>
         
-        <Div className="item2">
-          <p>Type: {pokemonData.types[0].type.name}</p>
-          <p>Type: {pokemonData.types[1].type.name}</p>
+        <Div>
+          <p>Types: {pokemonData.types.map((type) => <li>{type.name}</li>)}</p>
         </Div>
 
-        <Div className="item3">
+        <Div>
           <p>Height: {pokemonData.height}</p>
-          <p>Width: {pokemonData.width}</p>
+          <p>Weight: {pokemonData.weight}</p>
         </Div>
 
-        <Div className="item4">
-          <p>Ability 1: {pokemonData.abilities[0].ability.name}</p>
-          <p>Ability 2: {pokemonData.abilities[1].ability.name}</p>
+        <Div>
+          <p>Abilities: {pokemonData.abilities.map((ability) => <li>{ability.name}</li>)}</p>
         </Div>
-          
       </Container>
     </Pokedex>
   );
@@ -55,17 +53,18 @@ const Pokedex = styled.div`
 `;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 20px;
-  background-color: #2196F3;
-  padding: 10px;
-  background:url(${pokedex});
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 800 px;
+  height: 2000 px;
+  background-image:url(${pokedex});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 `;
 
 const Div = styled.div`
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px 0;
   font-size: 30px;
 `;
 
