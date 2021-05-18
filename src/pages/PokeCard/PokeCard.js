@@ -56,8 +56,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 800 px;
-  height: 2000 px;
+  width: 50%;
   background-image:url(${pokedex});
   background-repeat: no-repeat;
   background-position: center;
