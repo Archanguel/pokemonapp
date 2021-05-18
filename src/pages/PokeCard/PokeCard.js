@@ -12,34 +12,34 @@ export const PokeCard = ({ pokemon }) => {
   }, []);
 
   return (
-    <Pokedex width="20px">
-      <Wrapper>
-        <div>
+    <Pokedex width="30px">
+      <Container className="grid-container">
+        <Div>
           {pokemonData && (
             <img src={pokemonData.sprites.front_default} alt="Imagen del Pokemon" />
           )}
-        </div>
+        </Div>
 
-        <div>
+        <Div className="item1">
           <p>Name: {pokemonData.forms[0].name}</p>
           <p>Nº {pokemonData.id}</p>
-        </div>
+        </Div>
         
-        <div>
+        <Div className="item2">
           <p>Type: {pokemonData.types[0].type.name}</p>
-        </div>
+        </Div>
 
-        <div>
+        <Div className="item3">
           <p>Height: {pokemonData.height}</p>
           <p>Width: {pokemonData.width}</p>
-        </div>
+        </Div>
 
-        <div>
+        <Div className="item4">
           <p>Ability 1: {pokemonData.abilities[0].ability.name}</p>
           <p>Ability 2: {pokemonData.abilities[1].ability.name}</p>
-        </div>
+        </Div>
           
-      </Wrapper>
+      </Container>
     </Pokedex>
   );
 };
@@ -53,7 +53,24 @@ const Pokedex = styled.div`
   align-items: center;
 `;
 
-const Wrapper = styled.div`
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  background-color: #2196F3;
+  padding: 10px;
+  background:url(${pokedex});
+`;
+
+const Div = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px 0;
+  font-size: 30px;
+`;
+
+
+/*
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +81,8 @@ const Wrapper = styled.div`
 `;
 
 
-/*const PokemonLogo = styled.img`
+
+const PokemonLogo = styled.img`
   display: flex;
   width: 100%;
 `;
