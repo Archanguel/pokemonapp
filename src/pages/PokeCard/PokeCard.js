@@ -27,6 +27,7 @@ export const PokeCard = ({ pokemon }) => {
         
         <Div className="item2">
           <p>Type: {pokemonData.types[0].type.name}</p>
+          <p>Type: {pokemonData.types[1].type.name}</p>
         </Div>
 
         <Div className="item3">
