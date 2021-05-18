@@ -2,23 +2,33 @@ import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { PokemonLogoURL } from "./constants";
+import background from "../imgs/background.png";
 
 export const HomePage = ({ setPokemon }) => {
   const history = useHistory();
-
+  
   function handleSearchClick() {
-    setPokemon("squirtle");
     history.replace("/card");
+  }
+
+  function handleRandomClick() {
+    setPokemon( Math.floor( Math.random() *  898 ) + 1 );
+    history.replace("/card");
+  }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    setPokemon(event.target.value);
   }
 
   return (
     <Home width="20px">
       <Wrapper>
         <PokemonLogo src={PokemonLogoURL} alt="Pokemon Logo" />
-        <input style={{ marginBottom: "20px" }} type="search" />
+        <input onChange={handleSubmit} style={{ marginBottom: "20px" }} type="search" />
         <ButtonsWrapper>
           <button onClick={handleSearchClick}>Buscar</button>
-          <button>¡Azar!</button>
+          <button onClick={handleRandomClick}>¡Azar!</button>
         </ButtonsWrapper>
       </Wrapper>
     </Home>
@@ -32,8 +42,10 @@ const Home = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://i.pinimg.com/originals/26/b5/55/26b5551ba10f013a335e91b98f530d51.png");
+  background:url(${background});
 `;
+/**/
+//background-image: url("https://i.pinimg.com/originals/26/b5/55/26b5551ba10f013a335e91b98f530d51.png");
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +55,8 @@ const Wrapper = styled.div`
 `;
 
 const PokemonLogo = styled.img`
-  width: 350px;
+  display: flex;
+  width: 100%;
 `;
 
 const ButtonsWrapper = styled.div`
