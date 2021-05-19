@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import pokedex from "../imgs/pokedex.png";
+import background from "../imgs/background.png";
 
 export const PokeCard = ({ pokemon }) => {
   const [pokemonData, setPokemonData] = React.useState();
@@ -15,30 +16,20 @@ export const PokeCard = ({ pokemon }) => {
   //const abilityList = pokemonData.abilities.map((ability) => <li>{ability.name}</li>)
 
   return (
-    <Pokedex width="20px">
-      <Container>
+    <Pokedex>
+
         {pokemonData && (
-          <img src={pokemonData.sprites.front_default} alt="Imagen del Pokemon" />
+          <Container>
+            <img src={pokemonData.sprites.other.dream_world.front_default} alt="Imagen del Pokemon" />
+            <p>Name: {pokemonData.name}</p>
+            <p>Nº {pokemonData.id}</p>
+            <p>Types: {pokemonData.types.map((types) => <li>{types.type.name}</li>)}</p>
+            <p>Height: {pokemonData.height}</p>
+            <p>Weight: {pokemonData.weight}</p>
+            <p>Abilities: {pokemonData.abilities.map((abilities) => <li>{abilities.ability.name}</li>)}</p>
+          </Container>
         )}
 
-        <Div>
-          <p>Name: {pokemonData.forms[0].name}</p>
-          <p>Nº {pokemonData.id}</p>
-        </Div>
-        
-        <Div>
-          <p>Types: {pokemonData.types.map((type) => <li>{type.name}</li>)}</p>
-        </Div>
-
-        <Div>
-          <p>Height: {pokemonData.height}</p>
-          <p>Weight: {pokemonData.weight}</p>
-        </Div>
-
-        <Div>
-          <p>Abilities: {pokemonData.abilities.map((ability) => <li>{ability.name}</li>)}</p>
-        </Div>
-      </Container>
     </Pokedex>
   );
 };
@@ -63,9 +54,10 @@ const Container = styled.div`
   background-size: contain;
 `;
 
-const Div = styled.div`
+
+/*const Div = styled.div`
   font-size: 30px;
-`;
+`;*/
 
 
 /*
