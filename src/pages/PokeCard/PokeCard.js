@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import pokedex from "../imgs/pokedex.png";
-import background from "../imgs/background.png";
+import background from "../imgs/pokebola.jpg";
 
 export const PokeCard = ({ pokemon }) => {
   const [pokemonData, setPokemonData] = React.useState();
@@ -16,50 +16,93 @@ export const PokeCard = ({ pokemon }) => {
   //const abilityList = pokemonData.abilities.map((ability) => <li>{ability.name}</li>)
 
   return (
+    <Fondo>
     <Pokedex>
-
         {pokemonData && (
           <Container>
-            <img src={pokemonData.sprites.other.dream_world.front_default} alt="Imagen del Pokemon" />
-            <p>Name: {pokemonData.name}</p>
-            <p>Nº {pokemonData.id}</p>
-            <p>Types: {pokemonData.types.map((types) => <li>{types.type.name}</li>)}</p>
-            <p>Height: {pokemonData.height}</p>
-            <p>Weight: {pokemonData.weight}</p>
-            <p>Abilities: {pokemonData.abilities.map((abilities) => <li>{abilities.ability.name}</li>)}</p>
+            <Image>
+              <img src={pokemonData.sprites.other.dream_world.front_default} alt="Imagen del Pokemon" />
+            </Image>
+
+            <Info>
+              <p>Name: {pokemonData.name}</p>
+              <p>Nº {pokemonData.id}</p>
+              <p>Types: {pokemonData.types.map((types) => <li>{types.type.name}</li>)}</p>
+            </Info>
+
+            <Extra>
+              <p>Height: {pokemonData.height}</p>
+              <p>Weight: {pokemonData.weight}</p>
+              <p>Abilities: {pokemonData.abilities.map((abilities) => <li>{abilities.ability.name}</li>)}</p>
+            </Extra>
           </Container>
         )}
-
     </Pokedex>
+    </Fondo>
   );
 };
 
-const Pokedex = styled.div`
+const Fondo = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image:url(${background});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 
-const Container = styled.div`
+const Pokedex = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 50%;
+  height: 100vh;
+  align-items: center;
   background-image:url(${pokedex});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100%;
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  family-font: arial;
+  text-transform: capitalize;
+`;
+
+const Image = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+const Extra = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  line-height: 1.5em;
+  align-items: center;
+`;
 
 /*const Div = styled.div`
   font-size: 30px;
-`;*/
+`;
 
-
+Types: <table>{pokemonData.types.map((types) => <tbody>{types.type.name}</tbody>)}</table>
+*/
 /*
 const Container = styled.div`
   display: flex;
