@@ -94,13 +94,13 @@ export const PokeCard = ({ pokemon }) => {
       
             <div className="right-container__black">
               <div className="right-container__screen">
-                <div className="list-item"></div>
+                <div className="list-item">Favoritos</div>
               </div>
             </div>
       
             <div className="right-container__buttons">
-              <div className="left-button">Prev</div>
-              <div className="right-button">Next</div>
+              <div className="left-button">♡♥</div>
+              <div className="right-button">Menu</div>
             </div>
       
           </div>
