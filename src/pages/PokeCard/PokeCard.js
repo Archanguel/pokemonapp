@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import pokedex from "../imgs/pokedex.png";
 import background from "../imgs/pokebola.jpg";
+import "./Pokedex.css";
 
 export const PokeCard = ({ pokemon }) => {
   const [pokemonData, setPokemonData] = React.useState();
@@ -16,86 +17,98 @@ export const PokeCard = ({ pokemon }) => {
   //const abilityList = pokemonData.abilities.map((ability) => <li>{ability.name}</li>)
 
   return (
-    <Fondo>
-    <Pokedex>
-        {pokemonData && (
-          <Container>
-            <Image>
-              <img src={pokemonData.sprites.other.dream_world.front_default} alt="Imagen del Pokemon" />
-            </Image>
+    <div className="pokedex">
+          <div className="left-container">
+      
+            <div className="left-container__top-section">
+              <div className="top-section__blue"></div>
+      
+                <div className="top-section__small-buttons">
+                  <div className="top-section__red"></div>
+                  <div className="top-section__yellow"></div>
+                  <div className="top-section__green"></div>
+                </div>
+      
+              </div>
+      
+            <div className="left-container__main-section-container">
+              <div className="left-container__main-section">
+                <div className="main-section__white">
+                  <div className="main-section__black">
+                    {pokemonData && (
+                    <div className="main-screen hide">
+                      <div className="screen__header">
+                        <span className="poke-name">{pokemonData.name}</span>
+                        <span className="poke-id">#{pokemonData.id}</span>
+                      </div>
 
-            <Info>
-              <p>Name: {pokemonData.name}</p>
-              <p>Nº {pokemonData.id}</p>
-              <p>Types: {pokemonData.types.map((types) => <li>{types.type.name}</li>)}</p>
-            </Info>
+                      <div className="screen__image">
+                        <img src={pokemonData.sprites.front_default} className="poke-front-image" alt="front"/>
+                        <img src={pokemonData.sprites.back_default} className="poke-back-image" alt="back"/>
+                      </div>
 
-            <Extra>
-              <p>Height: {pokemonData.height}</p>
-              <p>Weight: {pokemonData.weight}</p>
-              <p>Abilities: {pokemonData.abilities.map((abilities) => <li>{abilities.ability.name}</li>)}</p>
-            </Extra>
-          </Container>
-        )}
-    </Pokedex>
-    </Fondo>
+                      <div className="screen__description">
+                        <div className="stats__types">
+                          <span className="poke-type-one">{pokemonData.types.map(types => <>{types.type.name}</>)}</span>
+                        </div>
+                        <div className="screen__stats">
+                          <p className="stats__weight">
+                            weight: <span className="poke-weight">{pokemonData.weight}</span>
+                          </p>
+                          <p className="stats__height">
+                            height: <span className="poke-height">{pokemonData.height}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                    )}
+                  </div>
+                </div>
+      
+                <div className="left-container__controllers">
+                  <div className="controllers__d-pad">
+                    <div className="d-pad__cell top"></div>
+                    <div className="d-pad__cell left"></div>
+                    <div className="d-pad__cell middle"></div>
+                    <div className="d-pad__cell right"></div>
+                    <div className="d-pad__cell bottom"></div>
+                  </div>
+      
+                  <div className="controllers__buttons">
+                    <div className="buttons__button">B</div>
+                    <div className="buttons__button">A</div>
+                  </div>
+                </div>
+      
+              </div>
+      
+              <div className="left-container__right">
+                <div className="left-container__hinge"></div>
+                <div className="left-container__hinge"></div>
+              </div>
+            </div>
+          </div>
+      
+          <div className="right-container">
+      
+            <div className="right-container__black">
+              <div className="right-container__screen">
+                <div className="list-item"></div>
+              </div>
+            </div>
+      
+            <div className="right-container__buttons">
+              <div className="left-button">Prev</div>
+              <div className="right-button">Next</div>
+            </div>
+      
+          </div>
+    </div>
   );
 };
 
-const Fondo = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image:url(${background});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-`;
 
-const Pokedex = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-  height: 100vh;
-  align-items: center;
-  background-image:url(${pokedex});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  family-font: arial;
-  text-transform: capitalize;
-`;
-
-const Image = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
-const Extra = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  line-height: 1.5em;
-  align-items: center;
-`;
 
 /*const Div = styled.div`
   font-size: 30px;
