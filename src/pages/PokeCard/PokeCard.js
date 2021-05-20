@@ -49,7 +49,7 @@ export const PokeCard = ({ pokemon }) => {
 
                       <div className="screen__description">
                         <div className="stats__types">
-                          <span className="poke-type-one">{pokemonData.types.map(types => <>{types.type.name}</>)}</span>
+                          <span className="poke-type-one">{pokemonData.types.map((types, index) => <li key={index}>{types.type.name}</li>)}</span>
                         </div>
                         <div className="screen__stats">
                           <p className="stats__weight">
@@ -107,7 +107,6 @@ export const PokeCard = ({ pokemon }) => {
     </div>
   );
 };
-
 
 
 /*const Div = styled.div`

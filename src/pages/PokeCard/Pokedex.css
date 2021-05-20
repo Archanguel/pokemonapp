@@ -107,6 +107,7 @@
     color: white;
     font-size: 25px;
     font-weight: bold;
+    text-transform:capitalize;
   }
   
   .poke-id {
@@ -154,7 +155,8 @@
     display: block;
     margin-bottom: 10px;
     padding: 10px;
-    text-align: center;
+    /*text-align: center;*/
+    list-style:none;
   }
   
   .left-container__controllers {
