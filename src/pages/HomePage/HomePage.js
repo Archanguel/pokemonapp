@@ -18,17 +18,18 @@ export const HomePage = ({ setPokemon }) => {
 
   function handleSubmit(event){
     event.preventDefault();
-    setPokemon(event.target.value);
+    setPokemon((event.target.value).toLowerCase());
   }
 
   return (
     <Home width="20px">
       <Wrapper>
         <PokemonLogo src={PokemonLogoURL} alt="Pokemon Logo" />
-        <input onChange={handleSubmit} style={{ marginBottom: "20px" }} type="search" />
+        <input onChange={handleSubmit} style={{ marginBottom: "20px" }} type="search" placeholder="Search a Pokémon"/>
         <ButtonsWrapper>
-          <button onClick={handleSearchClick}>Buscar</button>
-          <button onClick={handleRandomClick}>¡Azar!</button>
+          <button onClick={handleSearchClick}>Search</button>
+          <button onClick={handleRandomClick}>Favorites</button>
+          <button onClick={handleRandomClick}>Random</button>
         </ButtonsWrapper>
       </Wrapper>
     </Home>
@@ -43,6 +44,7 @@ const Home = styled.div`
   justify-content: center;
   align-items: center;
   background:url(${background});
+  background-size: cover;
 `;
 /**/
 //background-image: url("https://i.pinimg.com/originals/26/b5/55/26b5551ba10f013a335e91b98f530d51.png");
@@ -73,18 +75,11 @@ const ButtonsWrapper = styled.div`
     border: none;
     border-radius: 6px;
     transition: all ease-out 0.3s;
+    width: 33.3%;
 
     &:hover {
       filter: brightness(0.8);
       transform: translateY(-4px);
-    }
-
-    &:first-child {
-      width: 70%;
-    }
-
-    &:last-child {
-      width: 30%;
     }
   }
 `;

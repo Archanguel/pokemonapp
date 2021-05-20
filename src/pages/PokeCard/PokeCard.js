@@ -3,21 +3,25 @@ import styled from "styled-components";
 import pokedex from "../imgs/pokedex.png";
 import background from "../imgs/pokebola.jpg";
 import "./Pokedex.css";
+import { useHistory } from "react-router";
 
-export const PokeCard = ({ pokemon }) => {
+export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
   const [pokemonData, setPokemonData] = React.useState();
+  const history = useHistory();
+  const favoriteNames = favorites.map(favorite => favorite.name)
+  const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
+  console.log(isPokemonAdded);
 
   React.useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then((response) =>
       response.json().then((data) => setPokemonData(data))
     );
-  }, []);
-
-  //const typeList = pokemonData.types.map((type) => <li>{type.name}</li>)
-  //const abilityList = pokemonData.abilities.map((ability) => <li>{ability.name}</li>)
+  }, [pokemon]);
 
   return (
-    <div className="pokedex">
+    <>
+      {pokemonData && (
+        <div className="pokedex">
           <div className="left-container">
       
             <div className="left-container__top-section">
@@ -35,7 +39,6 @@ export const PokeCard = ({ pokemon }) => {
               <div className="left-container__main-section">
                 <div className="main-section__white">
                   <div className="main-section__black">
-                    {pokemonData && (
                     <div className="main-screen hide">
                       <div className="screen__header">
                         <span className="poke-name">{pokemonData.name}</span>
@@ -49,20 +52,19 @@ export const PokeCard = ({ pokemon }) => {
 
                       <div className="screen__description">
                         <div className="stats__types">
-                          <span className="poke-type-one">{pokemonData.types.map((types, index) => <li key={index}>{types.type.name}</li>)}</span>
+                          {pokemonData.types.map((types, index) => <span className="poke-type-one" key={index}>{types.type.name}</span>)}
                         </div>
                         <div className="screen__stats">
                           <p className="stats__weight">
-                            weight: <span className="poke-weight">{pokemonData.weight}</span>
+                            Weight: <span className="poke-weight">{pokemonData.weight}</span>
                           </p>
                           <p className="stats__height">
-                            height: <span className="poke-height">{pokemonData.height}</span>
+                            Height: <span className="poke-height">{pokemonData.height}</span>
                           </p>
                         </div>
                       </div>
 
                     </div>
-                    )}
                   </div>
                 </div>
       
@@ -94,17 +96,19 @@ export const PokeCard = ({ pokemon }) => {
       
             <div className="right-container__black">
               <div className="right-container__screen">
-                <div className="list-item">Favoritos</div>
+                <div className="list-item">Favorites</div>
               </div>
             </div>
       
             <div className="right-container__buttons">
-              <div className="left-button">♡♥</div>
-              <div className="right-button">Menu</div>
+              <div className="left-button" onClick={isPokemonAdded ? () => deleteFav(pokemonData.name) : () => addFavorite(pokemonData)}> {isPokemonAdded ? 'Delete Fav' : 'Add Fav'} </div>
+              <div className="right-button" onClick={() => history.push("./")}>Go To Menu</div>
             </div>
       
           </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 

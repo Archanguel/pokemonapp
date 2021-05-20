@@ -316,7 +316,7 @@
     height: 25px;
     overflow-x: hidden;
     padding-left: 5px;
-    width: 50%;
+    width: 100%;/*width: 50%;*/
   }
   
   .list-item:hover {
@@ -348,7 +348,7 @@
     height: 30px;
     justify-content: center;
     text-transform: uppercase;
-    width: 100px;
+    width: 140px;
   }
   
   .left-button:hover,
@@ -361,6 +361,7 @@
     box-shadow: inset 0 0 2px 2px rgba(0,0,0,.3);
   }
 
-  .left-button{
+  /*.left-button{
       font-size: 30px;
-  }
+      ♡♥
+  }*/
