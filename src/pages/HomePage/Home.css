@@ -17,5 +17,8 @@
     border: none;
     border-radius: 6px;
     align-self: center;
-    
+}
+
+.image:hover{
+    filter: blur(5px);
 }

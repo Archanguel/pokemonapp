@@ -14,10 +14,11 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
 
   React.useEffect(() => {
     setStatus("loading");
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then((response) =>
-      response.json().then((data) => setPokemonData(data))
-    ).catch((error) => setStatus("error"))
-    .finally(setStatus("idle"));
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+      .then((response) => response.json()
+      .then((data) => setPokemonData(data)))
+      .catch((error) => setStatus("error"))
+      .finally(setStatus("idle"));
   }, [pokemon]);
 
   if(status === "idle"){
@@ -100,7 +101,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
         
               <div className="right-container__black">
                 <div className="right-container__screen">
-                  {favorites.map((favorite, index) => <div className="list-item" key={index}>♥ {favorite.name}  #{favorite.id} </div>)}
+                  {favorites.map((favorite, index) => <div className="list-item" key={index} onClick={isPokemonAdded ? () => deleteFav(favorite.name) : () => deleteFav(favorite.name)}>♥ {favorite.name}  #{favorite.id} </div>)}
                 </div>
               </div>
         

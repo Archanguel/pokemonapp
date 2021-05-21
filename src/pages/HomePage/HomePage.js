@@ -6,8 +6,14 @@ import background from "../imgs/background3.png";
 import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
-export const HomePage = ({ setPokemon, favorites }) => {
+export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
   const history = useHistory();
+  //const favoriteNames = favorites.map(favorite => favorite.name)
+  const [status, setStatus] = React.useState("show");
+  
+  /*React.useEffect(() => {
+    setStatus("show");
+  }, []);*/
   
   function handleSearchClick() {
     history.replace("/card");
@@ -23,6 +29,14 @@ export const HomePage = ({ setPokemon, favorites }) => {
     setPokemon((event.target.value).toLowerCase());
   }
 
+  function ShowFav(){
+    if(status === "hide"){
+      setStatus("show");
+    }else if(status === "show"){
+      setStatus("hide");
+    }
+  }
+
   return (
     <Home width="20px">
       <Wrapper>
@@ -30,16 +44,20 @@ export const HomePage = ({ setPokemon, favorites }) => {
         <input onChange={handleSubmit} style={{ marginBottom: "20px", marginTop: "20px" }} type="search" placeholder="Search a Pokémon"/>
         <ButtonsWrapper>
           <button onClick={handleSearchClick}>Search</button>
-          <button onClick={handleRandomClick}>Favorites</button>
+          <button onClick={ShowFav}>{(status==="show") ?  "Show Favorites" : "Hide Favorites"}</button>
           <button onClick={handleRandomClick}>Random</button>
         </ButtonsWrapper>
-        <Pokebola>
-          {favorites.map((favorite, index) => <p className="favs" key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name} #{favorite.id} </p>)}
-        </Pokebola>
+
+          <Pokebola>
+            { (status==="show") ?  favorites.map((favorite, index) => <p className="favs" key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name} #{favorite.id} </p>) : ""}
+          </Pokebola>
+
       </Wrapper>
     </Home>
   );
 };
+
+/* onClick={isPokemonAdded ? () => deleteFav(favorite.name) : () => deleteFav(favorite.name)} */
 
 const Home = styled.div`
   width: 100vw;
