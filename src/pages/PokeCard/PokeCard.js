@@ -10,7 +10,6 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  console.log(isPokemonAdded);
 
   React.useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then((response) =>
@@ -96,12 +95,12 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
       
             <div className="right-container__black">
               <div className="right-container__screen">
-                <div className="list-item">Favorites</div>
+                {favorites.map((favorite, index) => <div className="list-item" onClick={isPokemonAdded ? () => deleteFav(favorite.name):undefined} key={index}>♥ {favorite.name}  #{favorite.id} </div>)}
               </div>
             </div>
       
             <div className="right-container__buttons">
-              <div className="left-button" onClick={isPokemonAdded ? () => deleteFav(pokemonData.name) : () => addFavorite(pokemonData)}> {isPokemonAdded ? 'Delete Fav' : 'Add Fav'} </div>
+              <div className="left-button" onClick={isPokemonAdded ? () => deleteFav(pokemonData.name) : () => addFavorite(pokemonData)}> {isPokemonAdded ? '♥' : '♡'} </div>
               <div className="right-button" onClick={() => history.push("./")}>Go To Menu</div>
             </div>
       

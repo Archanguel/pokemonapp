@@ -3,8 +3,9 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { PokemonLogoURL } from "./constants";
 import background from "../imgs/background.png";
+import "./Home.css";
 
-export const HomePage = ({ setPokemon }) => {
+export const HomePage = ({ setPokemon, favorites }) => {
   const history = useHistory();
   
   function handleSearchClick() {
@@ -31,6 +32,7 @@ export const HomePage = ({ setPokemon }) => {
           <button onClick={handleRandomClick}>Favorites</button>
           <button onClick={handleRandomClick}>Random</button>
         </ButtonsWrapper>
+        {favorites.map((favorite, index) => <p key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name}  #{favorite.id} </p>)}
       </Wrapper>
     </Home>
   );

@@ -15,10 +15,8 @@ export const Router = () => {
   }
 
   function deleteFavorite(pokemonName){
-    setFavorite(favorites.filter((favorite) => favorite.name != pokemonName));
+    setFavorite(favorites.filter((favorite) => favorite.name !== pokemonName));
   }
-
-  console.log("FAVORITES", favorites);
 
   return (
     <BrowserRouter>
@@ -28,7 +26,7 @@ export const Router = () => {
         </Route>
 
         <Route path="/">
-          <HomePage setPokemon={handleSetPokemon} />
+          <HomePage setPokemon={handleSetPokemon} favorites={favorites}/>
         </Route>
       </Switch>
     </BrowserRouter>
