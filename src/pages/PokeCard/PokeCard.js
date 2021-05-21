@@ -95,7 +95,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
       
             <div className="right-container__black">
               <div className="right-container__screen">
-                {favorites.map((favorite, index) => <div className="list-item" onClick={isPokemonAdded ? () => deleteFav(favorite.name):undefined} key={index}>♥ {favorite.name}  #{favorite.id} </div>)}
+                {favorites.map((favorite, index) => <div className="list-item" key={index}>♥ {favorite.name}  #{favorite.id} </div>)}
               </div>
             </div>
       

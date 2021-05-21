@@ -2,7 +2,8 @@ import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { PokemonLogoURL } from "./constants";
-import background from "../imgs/background.png";
+import background from "../imgs/background3.png";
+import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
 export const HomePage = ({ setPokemon, favorites }) => {
@@ -26,13 +27,15 @@ export const HomePage = ({ setPokemon, favorites }) => {
     <Home width="20px">
       <Wrapper>
         <PokemonLogo src={PokemonLogoURL} alt="Pokemon Logo" />
-        <input onChange={handleSubmit} style={{ marginBottom: "20px" }} type="search" placeholder="Search a Pokémon"/>
+        <input onChange={handleSubmit} style={{ marginBottom: "20px", marginTop: "20px" }} type="search" placeholder="Search a Pokémon"/>
         <ButtonsWrapper>
           <button onClick={handleSearchClick}>Search</button>
           <button onClick={handleRandomClick}>Favorites</button>
           <button onClick={handleRandomClick}>Random</button>
         </ButtonsWrapper>
-        {favorites.map((favorite, index) => <p key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name}  #{favorite.id} </p>)}
+        <Pokebola>
+          {favorites.map((favorite, index) => <p className="favs" key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name} #{favorite.id} </p>)}
+        </Pokebola>
       </Wrapper>
     </Home>
   );
@@ -84,4 +87,13 @@ const ButtonsWrapper = styled.div`
       transform: translateY(-4px);
     }
   }
+`;
+
+const Pokebola = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-top: 20px;
+  gap: 10px;
+  justify-content: center;
 `;

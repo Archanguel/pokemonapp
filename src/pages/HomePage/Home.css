@@ -1,4 +1,21 @@
+.favs{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(40, 162, 219);
+    border: none;
+    border-radius: 6px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
 .image{
+    display: flex;
     width: 98px;
     height: 98px;
+    background:url("../imgs/favoriteBackground.jpg");
+    background-size: 98px;
+    border: none;
+    border-radius: 6px;
+    align-self: center;
+    
 }
