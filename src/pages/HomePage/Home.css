@@ -17,8 +17,15 @@
     border: none;
     border-radius: 6px;
     align-self: center;
+    
 }
 
 .image:hover{
     filter: blur(5px);
+    transition: all ease-out 0.3s;
+}
+
+.searchBar{
+    height: 50px;
+    font-size: 30px;
 }

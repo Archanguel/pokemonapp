@@ -26,7 +26,7 @@ export const Router = () => {
         </Route>
 
         <Route path="/">
-          <HomePage setPokemon={handleSetPokemon} favorites={favorites}/>
+          <HomePage setPokemon={handleSetPokemon} favorites={favorites} deleteFav={deleteFavorite}/>
         </Route>
       </Switch>
     </BrowserRouter>

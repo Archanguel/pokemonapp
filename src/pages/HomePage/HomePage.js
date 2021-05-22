@@ -2,14 +2,16 @@ import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { PokemonLogoURL } from "./constants";
+import pokemonFinder from "../imgs/PokemonFinder.png";
 import background from "../imgs/background3.png";
 import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
 export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
   const history = useHistory();
-  //const favoriteNames = favorites.map(favorite => favorite.name)
-  const [status, setStatus] = React.useState("show");
+  //const favoriteNames = favorites.map(favorite => favorite.name);
+  //const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
+  const [status, setStatus] = React.useState("hide");
   
   /*React.useEffect(() => {
     setStatus("show");
@@ -40,18 +42,23 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
   return (
     <Home width="20px">
       <Wrapper>
-        <PokemonLogo src={PokemonLogoURL} alt="Pokemon Logo" />
-        <input onChange={handleSubmit} style={{ marginBottom: "20px", marginTop: "20px" }} type="search" placeholder="Search a Pokémon"/>
+        <PokemonLogo src={pokemonFinder} alt="Pokemon Logo" />
+        <input className="searchBar" onChange={handleSubmit} style={{ marginBottom: "20px", marginTop: "20px" }} type="search" placeholder="Search a Pokémon"/>
         <ButtonsWrapper>
           <button onClick={handleSearchClick}>Search</button>
-          <button onClick={ShowFav}>{(status==="show") ?  "Show Favorites" : "Hide Favorites"}</button>
+          <button onClick={ShowFav}>{(status==="show") ?  "Hide Favorites" : "Show Favorites"}</button>
           <button onClick={handleRandomClick}>Random</button>
         </ButtonsWrapper>
 
           <Pokebola>
-            { (status==="show") ?  favorites.map((favorite, index) => <p className="favs" key={index}><img className="image" src={favorite.sprites.front_default} />{favorite.name} #{favorite.id} </p>) : ""}
+            { (status==="show") ?  favorites.map((favorite, index) => 
+            <div className="favs" key={index}> 
+              <div> #{favorite.id} </div> 
+                <img className="image" src={favorite.sprites.front_default} /> 
+              {favorite.name}
+            </div>) : ""}
           </Pokebola>
-
+          
       </Wrapper>
     </Home>
   );
@@ -81,7 +88,8 @@ const Wrapper = styled.div`
 
 const PokemonLogo = styled.img`
   display: flex;
-  width: 100%;
+  width: 80%;
+  align-self: center;
 `;
 
 const ButtonsWrapper = styled.div`

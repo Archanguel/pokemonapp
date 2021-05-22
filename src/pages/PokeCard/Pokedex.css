@@ -365,3 +365,10 @@
       font-size: 30px;
       color: red;
   }
+
+  .pokelogo{
+    align-self: center;
+    width: 200px;
+    position: absolute;
+    right: 720px;
+  }

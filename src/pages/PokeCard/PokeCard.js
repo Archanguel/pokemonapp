@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import pokedex from "../imgs/pokedex.png";
 import background from "../imgs/pokebola.jpg";
+import pokelogo from "../imgs/pokedex4.png";
 import "./Pokedex.css";
 import { useHistory } from "react-router";
 
@@ -32,13 +33,15 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
               <div className="left-container__top-section">
                 <div className="top-section__blue"></div>
         
-                  <div className="top-section__small-buttons">
-                    <div className="top-section__red"></div>
-                    <div className="top-section__yellow"></div>
-                    <div className="top-section__green"></div>
-                  </div>
-        
+                <div className="top-section__small-buttons">
+                  <div className="top-section__red"></div>
+                  <div className="top-section__yellow"></div>
+                  <div className="top-section__green"></div>
                 </div>
+
+                  <img className="pokelogo" src={pokelogo} />
+        
+              </div>
         
               <div className="left-container__main-section-container">
                 <div className="left-container__main-section">
