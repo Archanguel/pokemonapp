@@ -8,6 +8,12 @@
     display: flex;
     font-family: sans-serif;
     justify-content: center;
+    background-color: black;
+    /*background-image: url("../imgs/pokebola.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;*/
   }
   
   .pokedex {
@@ -370,5 +376,29 @@
     align-self: center;
     width: 200px;
     position: absolute;
-    right: 720px;
+    right: 50%;
   }
+
+  .btnError{
+    align-self:auto;
+    position: absolute;
+    top:51%;
+    width: 140px;
+    height: 60px;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(118, 216, 255);
+    border-style: none;
+    color:white;
+  }
+
+  .btnError:hover{
+      cursor: pointer;
+      background-color: rgb(55, 198, 255);
+      transition: all ease-out 0.3s;
+      filter: brightness(0.8);
+  }
+
+  /*
+    text-size-adjust:inherit;
+  */

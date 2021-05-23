@@ -1,10 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { PokemonLogoURL } from "./constants";
+//import { PokemonLogoURL } from "./constants";
 import pokemonFinder from "../imgs/PokemonFinder.png";
 import background from "../imgs/background3.png";
-import favoriteBackground from "../imgs/favoriteBackground.jpg";
+//import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
 export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
@@ -40,7 +40,7 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
   }
 
   return (
-    <Home width="20px">
+    <Home>
       <Wrapper>
         <PokemonLogo src={pokemonFinder} alt="Pokemon Logo" />
         <input className="searchBar" onChange={handleSubmit} style={{ marginBottom: "20px", marginTop: "20px" }} type="search" placeholder="Search a Pokémon"/>
@@ -54,7 +54,7 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
             { (status==="show") ?  favorites.map((favorite, index) => 
             <div className="favs" key={index}> 
               <div> #{favorite.id} </div> 
-                <img className="image" src={favorite.sprites.front_default} /> 
+                <img className="image" src={favorite.sprites.front_default} alt="Favorite Pokémon" /> 
               {favorite.name}
             </div>) : ""}
           </Pokebola>
@@ -88,7 +88,7 @@ const Wrapper = styled.div`
 
 const PokemonLogo = styled.img`
   display: flex;
-  width: 80%;
+  width: 100%;
   align-self: center;
 `;
 

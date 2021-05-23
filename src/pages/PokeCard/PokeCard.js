@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import pokedex from "../imgs/pokedex.png";
-import background from "../imgs/pokebola.jpg";
+import loadingScreen from "../imgs/loadingimg.gif";
+import errorScreen from "../imgs/snorlax.gif";
 import pokelogo from "../imgs/pokedex4.png";
 import "./Pokedex.css";
 import { useHistory } from "react-router";
@@ -39,7 +39,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
                   <div className="top-section__green"></div>
                 </div>
 
-                  <img className="pokelogo" src={pokelogo} />
+                  <img className="pokelogo" src={pokelogo} alt="Pokémon Logo" />
         
               </div>
         
@@ -120,16 +120,46 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
     );
   
   }else if(status === "loading"){
-      return 'Loading...';
+      return(
+        <>
+        <LoadingImg>
+
+        </LoadingImg>
+        </>
+      );
   }else if(status === "error"){
       return (
         <>
-        <button onClick={() => history.push("./")}>Go To Menu</button>
-        ¡Pokémon not found!
+        <ErrorScreen>
+          <button className="btnError" onClick={() => history.push("./")}>Go To Menu</button>
+        </ErrorScreen>
         </>
       );
   }
 };
+
+const LoadingImg = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  height: 600px;
+  background:url(${loadingScreen});
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-self:center;
+`;
+
+const ErrorScreen = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  height: 600px;
+  background:url(${errorScreen});
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
 
 
 /*const Div = styled.div`
