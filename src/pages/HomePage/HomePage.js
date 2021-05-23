@@ -54,7 +54,7 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
             { (status==="show") ?  favorites.map((favorite, index) => 
             <div className="favs" key={index}> 
               <div> #{favorite.id} </div> 
-                <img className="image" src={favorite.sprites.front_default} alt="Favorite Pokémon" /> 
+                <img className="image" src={favorite.sprites.front_default} alt="Favorite Pokémon" />
               {favorite.name}
             </div>) : ""}
           </Pokebola>

@@ -15,7 +15,7 @@
     background:url("../imgs/favoriteBackground.jpg");
     background-size: 98px;
     border: none;
-    border-radius: 6px;
+    border-radius: 50px;
     align-self: center;
     
 }
@@ -28,4 +28,7 @@
 .searchBar{
     height: 50px;
     font-size: 30px;
+    text-align: center;
+    border-color: rgb(40, 162, 219);
+    border-radius: 20px;
 }

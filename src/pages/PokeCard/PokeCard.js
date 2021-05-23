@@ -16,8 +16,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
   React.useEffect(() => {
     setStatus("loading");
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-      .then((response) => response.json()
-      .then((data) => setPokemonData(data)))
+      .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
       .finally(setStatus("idle"));
   }, [pokemon]);
