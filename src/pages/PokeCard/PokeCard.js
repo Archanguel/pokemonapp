@@ -6,18 +6,18 @@ import pokelogo from "../imgs/pokedex4.png";
 import "./Pokedex.css";
 import { useHistory } from "react-router";
 
-export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
+export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, saved }) => {
   const [pokemonData, setPokemonData] = React.useState();
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  const [status, setStatus] = React.useState("loading");
+  const [status, setStatus] = React.useState("idle");
   //const [state, setState] = React.useState(() => JSON.parse(window.localStorage.getItem("pokemon")) );
 
   React.useEffect(() => {
-    //setStatus("loading");
-    //window.localStorage.setItem("pokemon", JSON.stringify(pokemonData));
-    //JSON.parse(window.localStorage.getItem(pokemon));
+    setStatus("loading");
+    //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
+    JSON.parse(window.localStorage.getItem(saved));
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
@@ -106,7 +106,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
         
               <div className="right-container__black">
                 <div className="right-container__screen">
-                  {favorites.map((favorite, index) => <div className="list-item" key={index} onClick={isPokemonAdded ? () => deleteFav(favorite.name) : () => deleteFav(favorite.name)}>♥ {favorite.name}  #{favorite.id} </div>)}
+                  {favorites.map((favorite, index) => <div className="list-item" key={index} onClick={() => deleteFav(favorite.name)}>♥ {favorite.name}  #{favorite.id} </div>)}
                 </div>
               </div>
         

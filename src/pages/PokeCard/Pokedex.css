@@ -111,10 +111,14 @@
   
   .poke-name {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     text-transform:capitalize;
   }
+
+  /*.poke-name::before {
+    content: "-";
+  }*/
   
   .poke-id {
     color: rgba(255, 253, 253, 0.5);
@@ -243,6 +247,8 @@
     height: 35px;
     justify-content: center;
     width: 35px;
+    user-select: none;
+    cursor: default;
   }
   
   .buttons__button:first-child {
@@ -319,7 +325,7 @@
     cursor: pointer;
     display: flex;
     font-size: 12px;
-    height: 25px;
+    height: 40px;
     overflow-x: hidden;
     padding-left: 5px;
     width: 50%;/*width: 100%;*/

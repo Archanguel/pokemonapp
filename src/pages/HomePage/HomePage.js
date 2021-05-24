@@ -7,7 +7,7 @@ import background from "../imgs/background3.png";
 //import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
-export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
+export const HomePage = ({ setPokemon, favorites, deleteFav, saved }) => {
   const history = useHistory();
   //const favoriteNames = favorites.map(favorite => favorite.name);
   //const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
@@ -54,7 +54,8 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
             { (status==="show") ?  favorites.map((favorite, index) => 
             <div className="favs" key={index}> 
               <div> #{favorite.id} </div> 
-                <img className="image" src={favorite.sprites.front_default} alt="Favorite Pokémon" />
+                  <img className="image" onClick={() => deleteFav(favorite.name)} src={favorite.sprites.front_default} alt="Favorite Pokémon" />
+                  <div className="deleteText" onClick={() => deleteFav(favorite.name)}>DELETE</div>
               {favorite.name}
             </div>) : ""}
           </Pokebola>
@@ -63,8 +64,6 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
     </Home>
   );
 };
-
-/* onClick={isPokemonAdded ? () => deleteFav(favorite.name) : () => deleteFav(favorite.name)} */
 
 const Home = styled.div`
   width: 100vw;
