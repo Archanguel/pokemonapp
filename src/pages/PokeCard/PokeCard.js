@@ -11,10 +11,13 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav }) => {
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  const [status, setStatus] = React.useState("idle");
+  const [status, setStatus] = React.useState("loading");
+  //const [state, setState] = React.useState(() => JSON.parse(window.localStorage.getItem("pokemon")) );
 
   React.useEffect(() => {
-    setStatus("loading");
+    //setStatus("loading");
+    //window.localStorage.setItem("pokemon", JSON.stringify(pokemonData));
+    //JSON.parse(window.localStorage.getItem(pokemon));
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
@@ -148,6 +151,7 @@ const LoadingImg = styled.div`
   background-repeat: no-repeat;
   align-self:center;
 `;
+/*z-index: 1;*/
 
 const ErrorScreen = styled.div`
   display: flex;

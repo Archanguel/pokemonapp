@@ -18,11 +18,15 @@ export const Router = () => {
     setFavorite(favorites.filter((favorite) => favorite.name !== pokemonName));
   }
 
+  /*function savedPokemon(pokemon) {
+    localStorage.setItem('pokemon', JSON.stringify(pokemon));
+  }*/
+
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/card">
-          <PokeCard pokemon={pokemon} addFavorite={handleAddFavorite} favorites={favorites} deleteFav={deleteFavorite}/>
+          <PokeCard pokemon={pokemon} addFavorite={handleAddFavorite} favorites={favorites} deleteFav={deleteFavorite} /*saved={savedPokemon}*//>
         </Route>
 
         <Route path="/">
