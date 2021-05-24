@@ -31,4 +31,10 @@
     text-align: center;
     border-color: rgb(40, 162, 219);
     border-radius: 20px;
+    outline: 0;
+}
+
+.searchBar:hover,
+.searchBar:focus{
+    border-color: crimson;
 }

@@ -11,7 +11,7 @@ export const HomePage = ({ setPokemon, favorites, deleteFav }) => {
   const history = useHistory();
   //const favoriteNames = favorites.map(favorite => favorite.name);
   //const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  const [status, setStatus] = React.useState("hide");
+  const [status, setStatus] = React.useState("show");
   
   /*React.useEffect(() => {
     setStatus("show");
