@@ -7,7 +7,7 @@ import background from "../imgs/background3.png";
 //import favoriteBackground from "../imgs/favoriteBackground.jpg";
 import "./Home.css";
 
-export const HomePage = ({ setPokemon, favorites, deleteFav, saved }) => {
+export const HomePage = ({ setPokemon, favorites, deleteFav, /*saved*/ }) => {
   const history = useHistory();
   //const favoriteNames = favorites.map(favorite => favorite.name);
   //const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);

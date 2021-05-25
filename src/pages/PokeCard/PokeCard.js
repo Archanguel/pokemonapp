@@ -6,7 +6,7 @@ import pokelogo from "../imgs/pokedex4.png";
 import "./Pokedex.css";
 import { useHistory } from "react-router";
 
-export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, saved }) => {
+export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/ }) => {
   const [pokemonData, setPokemonData] = React.useState();
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
@@ -17,7 +17,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, saved }) 
   React.useEffect(() => {
     setStatus("loading");
     //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    JSON.parse(window.localStorage.getItem(saved));
+    //JSON.parse(window.localStorage.getItem(saved));
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
