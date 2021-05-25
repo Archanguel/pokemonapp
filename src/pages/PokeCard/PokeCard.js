@@ -49,7 +49,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, saved }) 
                 <div className="left-container__main-section">
                   <div className="main-section__white">
                     <div className="main-section__black">
-                      <div className="main-screen hide">
+                      <div className={`main-screen `+pokemonData.types[0].type.name} /*className="main-screen hide"*/>
                         <div className="screen__header">
                           <span className="poke-name">{pokemonData.name}</span>
                           <span className="poke-id">#{pokemonData.id}</span>

@@ -54,9 +54,9 @@ export const HomePage = ({ setPokemon, favorites, deleteFav, saved }) => {
             { (status==="show") ?  favorites.map((favorite, index) => 
             <div className="favs" key={index}> 
               <div> #{favorite.id} </div> 
-                  <img className="image" onClick={() => deleteFav(favorite.name)} src={favorite.sprites.front_default} alt="Favorite Pokémon" />
-                  <div className="deleteText" onClick={() => deleteFav(favorite.name)}>DELETE</div>
-              {favorite.name}
+              <img className="image" onClick={() => deleteFav(favorite.name)} src={favorite.sprites.front_default} alt="Favorite Pokémon" />
+              <div className="deleteText" onClick={() => deleteFav(favorite.name)}>DELETE</div>
+              <div>{favorite.name}</div>
             </div>) : ""}
           </Pokebola>
           
