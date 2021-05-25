@@ -20,9 +20,9 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
     setStatus("loading");
     //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
     //JSON.parse(window.localStorage.getItem(saved));
-    localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    const pokemonSaved = localStorage.getItem("pokemon");
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSaved}`)
+    //localStorage.setItem("pokemon", JSON.stringify(pokemon));
+    //const pokemonSaved = localStorage.getItem("pokemon");
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
       .finally(setStatus("idle"));
