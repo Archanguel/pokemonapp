@@ -11,7 +11,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  const [status, setStatus] = React.useState("idle");
+  const [status, setStatus] = React.useState("loading");
   //const [state, setState] = React.useState(() => JSON.parse(window.localStorage.getItem("pokemon")) );
       //localStorage.setItem("pokemon", JSON.stringify(pokemon));
       //const pokemonSaved = localStorage.getItem("pokemon");
