@@ -11,21 +11,27 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
   const history = useHistory();
   const favoriteNames = favorites.map(favorite => favorite.name)
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
-  const [status, setStatus] = React.useState("loading");
-  //const [state, setState] = React.useState(() => JSON.parse(window.localStorage.getItem("pokemon")) );
+  const [status, setStatus] = React.useState("idle");
+  const [state, setState] = React.useState(() => JSON.parse(localStorage.getItem("pokemon")) );
       //localStorage.setItem("pokemon", JSON.stringify(pokemon));
       //const pokemonSaved = localStorage.getItem("pokemon");
 
   React.useEffect(() => {
+    //pokemon = JSON.parse(localStorage.getItem("pokemon"));
+    console.log(state);
     setStatus("loading");
-    //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    //JSON.parse(window.localStorage.getItem(saved));
-    //localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    //const pokemonSaved = localStorage.getItem("pokemon");
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json().then((data) => setPokemonData(data)))
       .catch((error) => setStatus("error"))
       .finally(setStatus("idle"));
+  },[])
+
+
+  React.useEffect(() => {
+    //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
+    //JSON.parse(window.localStorage.getItem(saved));
+    localStorage.setItem("pokemon", JSON.stringify(pokemon));
+    console.log(pokemon);
   }, [pokemon]);
 
   if(status === "idle"){
