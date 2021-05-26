@@ -28,7 +28,7 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
           })
         )
         .catch((error) => setStatus("error"));
-  },[])
+  },[pokemon])
 
 
   React.useEffect(() => {
