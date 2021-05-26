@@ -13,9 +13,10 @@ export const HomePage = ({ setPokemon, favorites, deleteFav, /*saved*/ }) => {
   //const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
   const [status, setStatus] = React.useState("show");
   
-  /*React.useEffect(() => {
-    setStatus("show");
-  }, []);*/
+  React.useEffect(() => {
+    //localStorage.setItem("favorites", JSON.stringify(favoriteNames));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
   
   function handleSearchClick() {
     history.replace("/card");
@@ -55,7 +56,7 @@ export const HomePage = ({ setPokemon, favorites, deleteFav, /*saved*/ }) => {
             <div className="favs" key={index}> 
               <div> #{favorite.id} </div> 
               <img className="image" onClick={() => deleteFav(favorite.name)} src={favorite.sprites.front_default} alt="Favorite Pokémon" />
-              <div className="deleteText" onClick={() => deleteFav(favorite.name)}>DELETE</div>
+              <div className="deleteText">DELETE</div>
               <div>{favorite.name}</div>
             </div>) : ""}
           </Pokebola>

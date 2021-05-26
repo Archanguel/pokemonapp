@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/ }) => {
   const [pokemonData, setPokemonData] = React.useState();
   const history = useHistory();
-  const favoriteNames = favorites.map(favorite => favorite.name)
+  const favoriteNames = favorites.map(favorite => favorite.name);
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
   const [status, setStatus] = React.useState("idle");
   //const [state, setState] = React.useState(() => JSON.parse(localStorage.getItem("pokemon")) );
@@ -35,8 +35,16 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
     //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
     //JSON.parse(window.localStorage.getItem(saved));
     localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    //console.log(pokemon);
+    console.log(pokemon);
+    //console.log(favoriteNames);
   }, [pokemon]);
+
+  React.useEffect(() => {
+    //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
+    //JSON.parse(window.localStorage.getItem(saved));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    console.log(favorites);
+  }, [favorites]);
 
   if(status === "idle"){
     
