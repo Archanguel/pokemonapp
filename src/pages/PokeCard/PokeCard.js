@@ -30,21 +30,13 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
         .catch((error) => setStatus("error"));
   },[pokemon])
 
-
   React.useEffect(() => {
     //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
     //JSON.parse(window.localStorage.getItem(saved));
     localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    console.log(pokemon);
-    //console.log(favoriteNames);
-  }, [pokemon]);
-
-  React.useEffect(() => {
-    //window.localStorage.setItem("pokemon", JSON.stringify(pokemon));
-    //JSON.parse(window.localStorage.getItem(saved));
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    console.log(favorites);
-  }, [favorites]);
+    //console.log(pokemon);
+  }, [pokemon, favorites]);
 
   if(status === "idle"){
     
