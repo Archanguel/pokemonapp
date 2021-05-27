@@ -13,11 +13,12 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
   const isPokemonAdded = pokemonData && favoriteNames.includes(pokemonData.name);
   const [status, setStatus] = React.useState("idle");
   //const [state, setState] = React.useState(() => JSON.parse(localStorage.getItem("pokemon")) );
+  //React.useState(JSON.parse(localStorage.getItem("pokemon")));
       //localStorage.setItem("pokemon", JSON.stringify(pokemon));
       //const pokemonSaved = localStorage.getItem("pokemon");
 
   React.useEffect(() => {
-    //pokemon = JSON.parse(localStorage.getItem("pokemon"));
+    //const saved = JSON.parse(localStorage.getItem("pokemon"));
     setStatus("loading");
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)//.then(setStatus("loading"))
         .then( (response) =>  
