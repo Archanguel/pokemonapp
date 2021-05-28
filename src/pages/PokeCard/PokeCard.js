@@ -121,12 +121,12 @@ export const PokeCard = ({ pokemon, addFavorite, favorites, deleteFav, /*saved*/
         
               <div className="right-container__black">
                 <div className="right-container__screen">
-                  {favorites.map((favorite, index) => <div className="list-item" key={index} onClick={() => deleteFav(favorite.name)}>♥ {favorite.name}  #{favorite.id} </div>)}
+                  {favorites.map((favorite, index) => <div className="list-item" key={index} onClick={() => deleteFav(favorite.name)}>{favorite.name}  #{favorite.id} </div>)}
                 </div>
               </div>
         
               <div className="right-container__buttons">
-                <div className="left-button" onClick={isPokemonAdded ? () => deleteFav(pokemonData.name) : () => addFavorite(pokemonData)}> {isPokemonAdded ? '♥' : '♡'} </div>
+                <div className="left-button" onClick={isPokemonAdded ? () => deleteFav(pokemonData.name) : () => addFavorite(pokemonData)}> {isPokemonAdded ? '❤️' : '🖤'} </div>
                 <div className="right-button" onClick={() => history.push("./")}>Go To Menu</div>
               </div>
         

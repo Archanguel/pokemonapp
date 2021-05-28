@@ -349,11 +349,17 @@
     overflow-x: hidden;
     padding-left: 5px;
     width: 50%;/*width: 100%;*/
+    text-transform: capitalize;
   }
-  
+  .list-item::before{
+    content: "❤️";
+  }
   .list-item:hover {
     background: #85cbf2;
     color: black;
+  }
+  .list-item:hover::before {
+    content: "❌";
   }
   
   .list-item:active {
@@ -391,11 +397,6 @@
   .left-button:active,
   .right-button:active {
     box-shadow: inset 0 0 2px 2px rgba(0,0,0,.3);
-  }
-
-  .left-button{
-      font-size: 30px;
-      color: red;
   }
 
   .pokelogo{
